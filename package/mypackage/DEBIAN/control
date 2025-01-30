@@ -1,0 +1,6 @@
+Package: mypackage
+Version: 1.0
+Architecture: all
+Maintainer: Сергей <your@email.com>
+Description: Пример Python-пакета для Termux
+Depends: python
