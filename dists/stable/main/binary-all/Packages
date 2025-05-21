@@ -1,0 +1,11 @@
+Package: hi
+Version: 1.0
+Architecture: all
+Maintainer: Sergey <sergey@example.com>
+Filename: pool/h/hi.deb
+Size: 836
+MD5sum: cdb6ce0d1d8e592252dc75bfa495cd5f
+SHA1: c2cf9bf21aca56276eab13bb23f1e83387eebb14
+SHA256: 617108a42687bfad7b91306cc955d933ddc925b21ba1e716d8be8fb23d72062b
+Description: Тестовый Python-пакет для Сергея
+

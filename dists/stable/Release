@@ -1,0 +1,32 @@
+Origin: termux-repo
+Label: termux-repo
+Suite: stable
+Codename: stable
+Date: Sat, 26 Apr 2025 18:40:02 +0000
+Architectures: all arm64
+Componentes: main
+Description: Termux custom repository
+MD5Sum:
+ 11d10bc50762bb9dfad27df20c12096c               38 Release
+ f680a676a7040ff49162c7b7c64c3ece              347 main/binary-all/Packages
+ 9e939dbdaf966b09a6a22c00f619f003              318 main/binary-all/Packages.gz
+ 0929033b616bf7e8ac93ce134e2baa76              361 main/binary-arm64/Packages
+ 7d447cfac980d3eee4b6c523105c98de              326 main/binary-arm64/Packages.gz
+SHA1:
+ bbefe222d9c8baf816b057bc866fc4652de055c8               38 Release
+ 372640525ea810ea44ee1640ffabfc8af69bce76              347 main/binary-all/Packages
+ f862cfdc1ab4917b0aee8ee309fb725261276ba5              318 main/binary-all/Packages.gz
+ 7addc6ffbeea0b9e40eb1520b9b53c0508690064              361 main/binary-arm64/Packages
+ 55c69eeee3ebbe600f25466b62d2c3c60242f0e4              326 main/binary-arm64/Packages.gz
+SHA256:
+ 798719e3e233ce934cd137e0da7a088fe2890e6a909e700c908e0fe61ddf60db               38 Release
+ a0296864360ad5199c75af460797d949cf810102e144c31560157f3f559f4a72              347 main/binary-all/Packages
+ 4cd46cb93b8769c24863631707c8c564a5cb70a60236ad7d3a9b5fd375de6d81              318 main/binary-all/Packages.gz
+ 0d052f5e870edeb985c3875015b2c44a5c6d86d51cd583e2feb7b8165875b002              361 main/binary-arm64/Packages
+ 1502c3d13452d8a9bca0e67b19ece2ca3568e79de98d9c63fc2b4a15c705abfa              326 main/binary-arm64/Packages.gz
+SHA512:
+ e8b07ff218d6ef44cddacce041314c340c78c46e2457d48727a09b804765afac33417ed61c6dbeb08c3714d8843a8fa6618d21f74585ca0931d6352f998e0e65               38 Release
+ 1e3e17d90723808d7d0c0471c91d250fa7cc2051256d66fa66eaa72326010b2d0eeb23da3ece0bbfa1031ccec331f3b4b730d26d8adc84b4a31b91692512294c              347 main/binary-all/Packages
+ b486a404d81670a02112c17d03bb0a28875a2aafb5922ff28155ad890bac599e1b4584928332b6e70f851e7a104946f42a0d31d9bfebfe3b4b26a8c186f5871b              318 main/binary-all/Packages.gz
+ de46f0942a57ed4606f83fe96f583bddf1789801cfd30bd49c2cb099d489b42454d745cf7e677fca68b757018354075ace6888bb0686e1aa905e3f33eaed6c33              361 main/binary-arm64/Packages
+ 48246b8d3b15845f2065e5604ec0c2c9f824eac31fdbaded188cb7155a247a400b0045b9c128929ae379a5c273b0dd9481f3d52012ad3eedc8d87ff0c24e1986              326 main/binary-arm64/Packages.gz

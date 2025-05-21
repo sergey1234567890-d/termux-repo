@@ -1,0 +1,11 @@
+Package: hi
+Version: 1.1
+Architecture: all
+Maintainer: Ты <madzidovs87@gmail.com>
+Filename: pool/h/hi.deb
+Size: 824
+MD5sum: b95750ecf752ab8742f20de647dcfc05
+SHA1: 112091bcaab2b227af89477e08d4831f1ae91253
+SHA256: 0cc7b94e1e85d02ea63ae241ef9bba4a9ff048df21de5303a3ae7938cf960afc
+Description: Просто пример пакета для Python-скрипта
+
