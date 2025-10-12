@@ -1,11 +1,12 @@
 Package: hi
-Version: 1.0
 Architecture: all
-Maintainer: Sergey <sergey@example.com>
-Filename: pool/h/hi.deb
-Size: 836
-MD5sum: cdb6ce0d1d8e592252dc75bfa495cd5f
-SHA1: c2cf9bf21aca56276eab13bb23f1e83387eebb14
-SHA256: 617108a42687bfad7b91306cc955d933ddc925b21ba1e716d8be8fb23d72062b
-Description: Тестовый Python-пакет для Сергея
+Version: 1.1
+Maintainer: Ты <madzidovs87@gmail.com>
+Filename: /root/termux-repo/pool/h/hi.deb
+Size: 824
+MD5sum: b95750ecf752ab8742f20de647dcfc05
+SHA1: 112091bcaab2b227af89477e08d4831f1ae91253
+SHA256: 0cc7b94e1e85d02ea63ae241ef9bba4a9ff048df21de5303a3ae7938cf960afc
+SHA512: 577b899b39c01a327dee4cae29844794fc3aa725bbb55011a83627091ae47ad99fdf77cc3e49bd7ada99dc12bd177fcbb7283a32af4cce67960fb3ef590765ad
+Description: Просто пример пакета для Python-скрипта
 
