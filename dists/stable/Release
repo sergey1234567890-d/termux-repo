@@ -7,3 +7,9 @@ Date: Mon, 13 Oct 2025 12:28:49 UTC
 Architectures: all arm64
 Components: main
 Description: Custom Termux APT repository
+
+SHA256:
+ 6ffe31fdae1314ea46ffc6a6bdc3f36518bb51609efeeef70e72f6ab752389b2 516 main/binary-all/Packages
+ 0c75f392a5a14c20e651c02f400bb2a1d6f51ced5198a8152b5d84cfb8ce3af7 429 main/binary-all/Packages.gz
+ 6ffe31fdae1314ea46ffc6a6bdc3f36518bb51609efeeef70e72f6ab752389b2 516 main/binary-arm64/Packages
+ 0c75f392a5a14c20e651c02f400bb2a1d6f51ced5198a8152b5d84cfb8ce3af7 429 main/binary-arm64/Packages.gz
