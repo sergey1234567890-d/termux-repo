@@ -1,0 +1,8 @@
+{
+    "format": 1,
+    "repo": "termux-repo",
+    "url": "https://raw.githubusercontent.com/sergey1234567890-d/main/termux-repo/windows/pull",
+    "architecture": [
+        "x86"
+    ]
+}
