@@ -6,7 +6,7 @@ import tarfile
 import json
 import hashlib
 import pathlib
-
+import argparse
 class Parckers():
     def __init__(self, name,):
         self.ins = name+'.tar'
@@ -83,3 +83,37 @@ class Parckers():
         except FileNotFoundError:
             print('No such file or directory')
 
+class CLI():
+    def __init__(self):
+        self.par = argparse.ArgumentParser(
+            description='''The standard apt2 packaging tool uses the zstandard compression algorithm. Help at 
+            https://sergey1234567890-d.github.io/MysiteAPTFW/'''
+        )
+        self._args()
+    def _args(self,):
+        self.par.add_argument(
+            'name',
+            type=str,
+            help='''
+        The namа parameter
+        is a mandatory argument and takes the name of the package to create.''',
+        )
+        self.par.add_argument(
+            'exe',
+            type=str,
+            help='The exe flag accepts the path to the executable .EXE file. Required argument',
+        )
+    def run(self):
+        self.args = self.par.parse_args()
+        self.main(self.args.name, self.args.exe)
+    def main(self, name, exe):
+        if name:
+            a = Parckers(name)
+            if exe:
+                a.nuw_control(input_f=exe)
+                a.json_control_seve()
+            a.tar()
+            a.zsts()
+if __name__ == '__main__':
+    s = CLI()
+    s.run()
