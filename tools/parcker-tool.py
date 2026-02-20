@@ -1,5 +1,7 @@
 import zstandard as zstd
 
+import os
+import shutil
 import tarfile
 import json
 import hashlib
@@ -7,6 +9,9 @@ import pathlib
 
 class Parckers():
     def __init__(self, name,):
+        self.ins = name+'.tar'
+        self.ins1 = self.ins+'.zst'
+        self.ins2 = name+'.apt2'
         self.path = pathlib.Path(name)
         self.conl = 'control.json'
         con = 'control'
@@ -18,10 +23,11 @@ class Parckers():
     def nuw_control(self, *, input_f,):
         '''Фунция для создание control.json
         input_f параметор  путь для exe '''
-        file_path =pathlib.Path(input_f)
-        file_path.rename(self.update_path / file_path.name)
-        f = self.update_path / file_path.name
+
         try:
+            file_path = pathlib.Path(input_f)
+            file_path.rename(self.update_path / file_path.name)
+            f = self.update_path / file_path.name
             self.control = {
                 'author': '',
                 'name': '',
@@ -51,24 +57,29 @@ class Parckers():
         except FileNotFoundError:
             print('No such file or directory')
     def tar(self, out = None,):
-        fs = self.control['version']
-        fs+='.tar'
         try:
-            with tarfile.open(self.path/fs, 'w') as tar:
+
+            with tarfile.open(self.ins, 'w') as tar:
                 tar.add(self.path, arcname=out)
         except FileNotFoundError:
             print('No such file or directory')
-    def zsts(self, outpath, lavel1=19):
+    def zsts(self, lavel1=19):
         cxx = zstd.ZstdCompressor(level=lavel1)
         try:
-            with open(self.path, 'rb') as f1:
-                with open(outpath, 'wb') as f2:
+            with open(self.ins, 'rb') as f1:
+                with open(self.ins1, 'wb') as f2:
                     cxx.copy_stream(f1, f2)
-            print(f'done {outpath}')
+            print(f'done {self.ins1}')
+            os.remove(self.ins)
+            if os.path.exists(self.path):
+                try:
+                    shutil.rmtree(self.path)
+                    print(f'Done remove dir {self.path}')
+                except OSError as err:
+                    print(f'Error remove dir {err.strerror}')
+            else:
+                print(f'No such file or directory {self.path}')
+            os.rename(self.ins1, self.ins2)
         except FileNotFoundError:
             print('No such file or directory')
-a = Parckers('hello')
-a.nuw_control(input_f=r'C;\users\PC\Desktop\h.exe')
-a.json_control_seve()
-a.tar()
-a.zsts('hello-0.0.0.zst')
+
