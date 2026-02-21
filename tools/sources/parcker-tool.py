@@ -1,13 +1,15 @@
+import sys
+
 import zstandard as zstd
 
-import os
 import shutil
 import tarfile
 import json
 import hashlib
 import pathlib
 import argparse
-class Parckers():
+import os
+class Parckers:
     def __init__(self, name,):
         self.ins = name+'.tar'
         self.ins1 = self.ins+'.zst'
@@ -20,42 +22,46 @@ class Parckers():
         self.update_path0.mkdir(parents=True, exist_ok=True)
         self.update_path = self.path / bns
         self.update_path.mkdir(parents=True, exist_ok=True)
+        self.control = {
+            'author': '',
+            'name': '',
+            'version': '',
+            'architecture': 'amd64',
+            'depends': [],
+            'sha256': ' ',
+        }
     def nuw_control(self, *, input_f,):
-        '''Фунция для создание control.json
-        input_f параметор  путь для exe '''
+        """ Фунция для создание control.json
+        input_f параметор  путь для exe
+"""
 
         try:
             file_path = pathlib.Path(input_f)
             file_path.rename(self.update_path / file_path.name)
             f = self.update_path / file_path.name
-            self.control = {
-                'author': '',
-                'name': '',
-                'version': '',
-                'architecture': 'amd64',
-                'depends': [],
-                'sha256' : ' ',
-            }
-            for s in self.control:
+
+            for sf in self.control:
                 if 'architecture' in s:
                     continue
                 elif 'sha256' in s:
                     break
-                i = input(s +': ')
-                self.control[s] = i
+                i = input(sf +': ')
+                self.control[sf] = i
 
             with open(f, 'rb') as f:
                 returns = hashlib.file_digest(f, 'sha256')
             self.control['sha256'] = returns.hexdigest()
         except FileNotFoundError:
             print('No such file or directory')
+            sys.exit()
     def json_control_seve(self,):
-        ''' File параметор пути для control.json'''
+        """File параметор пути для control.json"""
         try:
             with open(self.update_path0/self.conl, 'w') as f:
                 json.dump(self.control, f, indent=4)
         except FileNotFoundError:
             print('No such file or directory')
+            sys.exit()
     def tar(self, out = None,):
         try:
 
@@ -63,6 +69,7 @@ class Parckers():
                 tar.add(self.path, arcname=out)
         except FileNotFoundError:
             print('No such file or directory')
+            sys.exit()
     def zsts(self, lavel1=19):
         cxx = zstd.ZstdCompressor(level=lavel1)
         try:
@@ -82,8 +89,9 @@ class Parckers():
             os.rename(self.ins1, self.ins2)
         except FileNotFoundError:
             print('No such file or directory')
+            sys.exit()
 
-class CLI():
+class CLI:
     def __init__(self):
         self.par = argparse.ArgumentParser(
             description='''The standard apt2 packaging tool uses the zstandard compression algorithm. Help at 
@@ -106,14 +114,13 @@ class CLI():
     def run(self):
         self.args = self.par.parse_args()
         self.main(self.args.name, self.args.exe)
-    def main(self, name, exe):
-        if name:
-            a = Parckers(name)
-            if exe:
-                a.nuw_control(input_f=exe)
-                a.json_control_seve()
-            a.tar()
-            a.zsts()
+    @staticmethod
+    def main(name, exe):
+        a = Parckers(name)
+        a.nuw_control(input_f=exe)
+        a.json_control_seve()
+        a.tar()
+        a.zsts()
 if __name__ == '__main__':
     s = CLI()
     s.run()
