@@ -9,13 +9,16 @@ import hashlib
 import pathlib
 import argparse
 import os
-class Parckers:
-    def __init__(self, name,):
+class Parcker:
+    """Класс для сжатия и сбора пакета и запись информации о пакеты в формат .apt2"""
+    def __init__(self, name: str) -> None:
+        """Функция инит нужна для подготовки данных.
+        Name это имя пакета для создания пакета .apt2"""
         self.ins = name+'.tar'
         self.ins1 = self.ins+'.zst'
         self.ins2 = name+'.apt2'
         self.path = pathlib.Path(name)
-        self.conl = 'control.json'
+        self.conf = 'control.json'
         con = 'control'
         bns = 'bin'
         self.update_path0 = self.path / con
@@ -30,9 +33,9 @@ class Parckers:
             'depends': [],
             'sha256': ' ',
         }
-    def nuw_control(self, *, input_f,):
-        """ Фунция для создание control.json
-        input_f параметор  путь для exe
+    def nuw_control(self, *, input_f: str) -> None:
+        """ Функция для создания control.json c информации о пакете
+        input_f параметр путь до exe
 """
 
         try:
@@ -54,10 +57,10 @@ class Parckers:
         except FileNotFoundError:
             print('No such file or directory')
             sys.exit()
-    def json_control_seve(self,):
-        """File параметор пути для control.json"""
+    def json_control_save(self) -> None:
+        """Функция для сохранения файл control.json по пути control\control.json"""
         try:
-            with open(self.update_path0/self.conl, 'w') as f:
+            with open(self.update_path0/self.conf, 'w') as f:
                 json.dump(self.control, f, indent=4)
         except FileNotFoundError:
             print('No such file or directory')
@@ -70,8 +73,8 @@ class Parckers:
         except FileNotFoundError:
             print('No such file or directory')
             sys.exit()
-    def zsts(self, lavel1=19):
-        cxx = zstd.ZstdCompressor(level=lavel1)
+    def zst(self, level1: int =19) -> None:
+        cxx = zstd.ZstdCompressor(level=level1)
         try:
             with open(self.ins, 'rb') as f1:
                 with open(self.ins1, 'wb') as f2:
@@ -92,18 +95,22 @@ class Parckers:
             sys.exit()
 
 class CLI:
-    def __init__(self):
+    """class CLI нужен для обработки аргументов с командной строки """
+    def __init__(self) -> None:
+        """Функция __init__ для обработки аргументов из модуля argparse  """
         self.par = argparse.ArgumentParser(
-            description='''The standard apt2 packaging tool uses the zstandard compression algorithm. Help at 
+            description=''' Version 0.1.0 The standard apt2 packaging tool uses the zstandard compression algorithm. Help at 
             https://sergey1234567890-d.github.io/MysiteAPTFW/'''
         )
         self._args()
-    def _args(self,):
+        self.args = None
+    def _args(self,) -> None:
+        """Функция создание параметров и позиционных аргументов"""
         self.par.add_argument(
             'name',
             type=str,
             help='''
-        The namа parameter
+        The name parameter
         is a mandatory argument and takes the name of the package to create.''',
         )
         self.par.add_argument(
@@ -116,11 +123,11 @@ class CLI:
         self.main(self.args.name, self.args.exe)
     @staticmethod
     def main(name, exe):
-        a = Parckers(name)
+        a = Parcker(name)
         a.nuw_control(input_f=exe)
-        a.json_control_seve()
+        a.json_control_save()
         a.tar()
-        a.zsts()
+        a.zst()
 if __name__ == '__main__':
     s = CLI()
     s.run()
