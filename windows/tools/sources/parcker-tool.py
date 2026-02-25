@@ -54,6 +54,7 @@ class Parcker:
             with open(f, 'rb') as f:
                 returns = hashlib.file_digest(f, 'sha256')
             self.control['sha256'] = returns.hexdigest()
+
         except FileNotFoundError:
             print('No such file or directory')
             sys.exit()
